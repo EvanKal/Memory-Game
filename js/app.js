@@ -1,7 +1,12 @@
 /*
  * Create a list that holds all of your cards
  */
+const listOfCards = document.querySelectorAll(".card");
+const arrayOfCards = Array.from(listOfCards);
 
+// listOfCards.forEach(function (card) {
+//   card.classList.add("match", "open");
+// });
 
 /*
  * Display the cards on the page
@@ -9,6 +14,16 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+ function shuffleListOfCards () {
+   let newListOfCards = shuffle(arrayOfCards);
+   console.log(newListOfCards);
+   const deck = document.querySelector(".deck");
+   for (let i = 0; i<newListOfCards.length; i++) {
+     const getCardByIndex = newListOfCards[i];
+     deck.appendChild(getCardByIndex);
+   };
+ };
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
