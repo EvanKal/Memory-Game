@@ -95,6 +95,19 @@ function endCheck() {
   }
 };
 
+function createWinningMessage () {
+  let winningContainer = document.createElement("div");
+  winningContainer.setAttribute("id", "winningDiv");
+
+  let textElement1 = document.createElement("p");
+  textElement1.setAttribute("id", "congrats");
+  textElement1.textContent = "Congrats!!!";
+  winningContainer.appendChild(textElement1);
+
+  document.body.appendChild(winningContainer);
+}
+
+// createWinningMessage ();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
