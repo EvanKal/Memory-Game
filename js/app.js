@@ -4,6 +4,9 @@
 const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
+let listOfOpenedCards = [];
+
+
 
 
 // listOfCards.forEach(function (card) {
@@ -19,7 +22,7 @@ const deck = document.querySelector(".deck");
 
  function shuffleListOfCards () {
    let newListOfCards = shuffle(arrayOfCards);
-   console.log(newListOfCards);
+   // console.log(newListOfCards);
    for (let i = 0; i<newListOfCards.length; i++) {
      const getCardByIndex = newListOfCards[i];
      deck.appendChild(getCardByIndex);
@@ -45,20 +48,43 @@ deck.addEventListener("click", thingsToDoAfterClick);
 
 function thingsToDoAfterClick(evt) {
   flipCard(evt);
-  openedCards();
+  openedCards(evt);
+  matchCheck(evt);
 };
 
 function flipCard(evt) {
   evt.target.classList.add("show", "open");
 };
 
-function openedCards() {
-  let listOfOpenedCards = deck.querySelectorAll(".open");
+function openedCards(evt) {
+  let contentOfClickedCard = evt.target.innerHTML;
+  // console.log(contentOfClickedCard);
+  listOfOpenedCards.push(contentOfClickedCard);
   console.log(listOfOpenedCards);
 };
 
-function matchCheck() {
-  
+function matchCheck(evt) {
+  let contentOfClickedCard = evt.target.innerHTML;
+  console.log(contentOfClickedCard);
+
+  if (listOfOpenedCards.length>1) {
+    let openedCardsVariable = deck.querySelectorAll(".open");
+    for (let i=0; i < listOfOpenedCards.length - 1; i++) {
+      if (contentOfClickedCard == listOfOpenedCards[i]) {
+        openedCardsVariable.forEach(function (element) {
+          element.classList.add("match");
+      });
+        listOfOpenedCards = [];
+    } else {
+      setTimeout(function delayOfFlip() {
+      openedCardsVariable.forEach(function (element) {
+        element.classList.remove("open", "show");
+      console.log("Nope");
+      listOfOpenedCards = [];
+    })}, 1000);
+  };
+};
+};
 };
 
 /*
