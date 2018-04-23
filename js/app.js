@@ -50,6 +50,7 @@ function thingsToDoAfterClick(evt) {
   flipCard(evt);
   openedCards(evt);
   matchCheck(evt);
+  endCheck();
 };
 
 function flipCard(evt) {
@@ -85,6 +86,13 @@ function matchCheck(evt) {
   };
 };
 };
+};
+
+function endCheck() {
+  let matchedCardsSum = deck.querySelectorAll(".match");
+  if (matchedCardsSum.length == 16) {
+    console.log("Congrats!");
+  }
 };
 
 /*
