@@ -3,6 +3,8 @@
  */
 const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
+const deck = document.querySelector(".deck");
+
 
 // listOfCards.forEach(function (card) {
 //   card.classList.add("match", "open");
@@ -18,7 +20,6 @@ const arrayOfCards = Array.from(listOfCards);
  function shuffleListOfCards () {
    let newListOfCards = shuffle(arrayOfCards);
    console.log(newListOfCards);
-   const deck = document.querySelector(".deck");
    for (let i = 0; i<newListOfCards.length; i++) {
      const getCardByIndex = newListOfCards[i];
      deck.appendChild(getCardByIndex);
@@ -40,6 +41,25 @@ function shuffle(array) {
     return array;
 }
 
+deck.addEventListener("click", thingsToDoAfterClick);
+
+function thingsToDoAfterClick(evt) {
+  flipCard(evt);
+  openedCards();
+};
+
+function flipCard(evt) {
+  evt.target.classList.add("show", "open");
+};
+
+function openedCards() {
+  let listOfOpenedCards = deck.querySelectorAll(".open");
+  console.log(listOfOpenedCards);
+};
+
+function matchCheck() {
+  
+};
 
 /*
  * set up the event listener for a card. If a card is clicked:
