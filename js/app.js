@@ -8,7 +8,8 @@ const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
 let listOfOpenedCards = [];
 let counter = 0;
-// let previousTarget = "";
+let clickedCardsClasses = "";
+let previousTarget = "";
 
 
 
@@ -30,7 +31,7 @@ let counter = 0;
    // console.log(newListOfCards);
    for (let i = 0; i<newListOfCards.length; i++) {
      const getCardByIndex = newListOfCards[i];
-     let classNumber = `cardnumber${i}`;
+     let classNumber = `cardnumber${i+1}`;
      getCardByIndex.classList.add(classNumber);
      deck.appendChild(getCardByIndex);
    };
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function thingsToDoAfterClick(evt) {
+  previousTarget = evt.target.className;
   moveCount ();
   flipCard(evt);
   openedCards(evt);
@@ -70,6 +72,7 @@ function thingsToDoAfterClick(evt) {
 
 function flipCard(evt) {
   evt.target.classList.add("show", "open");
+
 };
 
 function openedCards(evt) {
@@ -83,6 +86,9 @@ function matchCheck(evt) {
   let contentOfClickedCard = evt.target.innerHTML;
   console.log(contentOfClickedCard);
   if (listOfOpenedCards.length>1) {
+    clickedCardsClasses = evt.target.className;
+    console.log(`${clickedCardsClasses}, ${previousTarget}`);
+    if (clickedCardsClasses != previousTarget) {
     let openedCardsVariable = deck.querySelectorAll(".open");
     for (let i=0; i < listOfOpenedCards.length - 1; i++) {
       if (contentOfClickedCard == listOfOpenedCards[i]) {
@@ -98,6 +104,10 @@ function matchCheck(evt) {
       listOfOpenedCards = [];
     })}, 500);
   };
+};
+} else {
+  evt.target.classList.remove("open", "show");
+  listOfOpenedCards = [];
 };
 };
 };
