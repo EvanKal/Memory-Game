@@ -13,12 +13,16 @@ let clickedCardsClasses = "";
 let previousTarget = "";
 
 
+deck.addEventListener("click", thingsToDoAfterClick);
 
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('the DOM is ready to be interacted with!');
+  shuffleListOfCards ();
+});
 
-
-// listOfCards.forEach(function (card) {
-//   card.classList.add("match", "open");
-// });
+getRestart.addEventListener("click", function () {
+  location.reload();
+});
 
 /*
  * Display the cards on the page
@@ -52,20 +56,6 @@ function shuffle(array) {
 
     return array;
 }
-
-deck.addEventListener("click", thingsToDoAfterClick);
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('the DOM is ready to be interacted with!');
-  shuffleListOfCards ();
-});
-
-getRestart.addEventListener("click", function () {
-  location.reload();
-});
-
-
-
 
 function thingsToDoAfterClick(evt) {
   let target = evt.target.classList.contains("card");
