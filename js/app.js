@@ -4,7 +4,11 @@
 const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
+const getCounter = document.querySelector(".moves");
+const getStars = document.querySelector(".stars");
 let listOfOpenedCards = [];
+let counter = 0;
+
 
 
 
@@ -47,10 +51,12 @@ function shuffle(array) {
 deck.addEventListener("click", thingsToDoAfterClick);
 
 function thingsToDoAfterClick(evt) {
+  moveCount ();
   flipCard(evt);
   openedCards(evt);
   matchCheck(evt);
   endCheck();
+
 };
 
 function flipCard(evt) {
@@ -82,10 +88,22 @@ function matchCheck(evt) {
         element.classList.remove("open", "show");
       console.log("Nope");
       listOfOpenedCards = [];
-    })}, 1000);
+    })}, 500);
   };
 };
 };
+};
+
+function moveCount () {
+  counter = counter + 1;
+  getCounter.textContent = counter;
+  if (counter == 13) {
+    let star = getStars.querySelector("li");
+    getStars.removeChild(star);
+  } else if (counter == 21) {
+    let star = getStars.querySelector("li");
+    getStars.removeChild(star);
+  };
 };
 
 function endCheck() {
