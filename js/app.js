@@ -7,6 +7,7 @@ const deck = document.querySelector(".deck");
 const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
 const getRestart = document.querySelector(".restart");
+const myDocFrag1 = document.createDocumentFragment();
 let listOfOpenedCards = [];
 let counter = 0;
 let clickedCardsClasses = "";
@@ -38,8 +39,9 @@ getRestart.addEventListener("click", function () {
      const getCardByIndex = newListOfCards[i];
      let classNumber = `cardnumber${i+1}`;
      getCardByIndex.classList.add(classNumber);
-     deck.appendChild(getCardByIndex);
+     myDocFrag1.appendChild(getCardByIndex);
    };
+   deck.appendChild(myDocFrag1);
  };
 
 // Shuffle function from http://stackoverflow.com/a/2450976
