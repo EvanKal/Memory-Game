@@ -8,6 +8,7 @@ const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
 let listOfOpenedCards = [];
 let counter = 0;
+// let previousTarget = "";
 
 
 
@@ -29,6 +30,8 @@ let counter = 0;
    // console.log(newListOfCards);
    for (let i = 0; i<newListOfCards.length; i++) {
      const getCardByIndex = newListOfCards[i];
+     let classNumber = `cardnumber${i}`;
+     getCardByIndex.classList.add(classNumber);
      deck.appendChild(getCardByIndex);
    };
  };
@@ -49,6 +52,12 @@ function shuffle(array) {
 }
 
 deck.addEventListener("click", thingsToDoAfterClick);
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('the DOM is ready to be interacted with!');
+  shuffleListOfCards ();
+});
+
 
 function thingsToDoAfterClick(evt) {
   moveCount ();
@@ -73,7 +82,6 @@ function openedCards(evt) {
 function matchCheck(evt) {
   let contentOfClickedCard = evt.target.innerHTML;
   console.log(contentOfClickedCard);
-
   if (listOfOpenedCards.length>1) {
     let openedCardsVariable = deck.querySelectorAll(".open");
     for (let i=0; i < listOfOpenedCards.length - 1; i++) {
@@ -97,10 +105,10 @@ function matchCheck(evt) {
 function moveCount () {
   counter = counter + 1;
   getCounter.textContent = counter;
-  if (counter == 13) {
+  if (counter == 23) {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
-  } else if (counter == 21) {
+  } else if (counter == 31) {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
   };
@@ -109,6 +117,7 @@ function moveCount () {
 function endCheck() {
   let matchedCardsSum = deck.querySelectorAll(".match");
   if (matchedCardsSum.length == 16) {
+    createWinningMessage ();
     console.log("Congrats!");
   }
 };
@@ -151,7 +160,7 @@ function createWinningMessage () {
   document.body.appendChild(winningContainer);
 }
 
-createWinningMessage ();
+// createWinningMessage ();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
