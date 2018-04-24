@@ -61,18 +61,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function thingsToDoAfterClick(evt) {
+  let target = evt.target.classList.contains("card");
+  if (target) {
   previousTarget = evt.target.className;
   moveCount ();
   flipCard(evt);
   openedCards(evt);
   matchCheck(evt);
   endCheck();
-
+};
 };
 
 function flipCard(evt) {
   evt.target.classList.add("show", "open");
-
 };
 
 function openedCards(evt) {

@@ -13,3 +13,10 @@ of the next card clicked. If they match they get the match class, but actually n
 but since some off them already have it then the addition is ignored. ---There might be a more efficient way, using just variables and comparing just them,
 because the array is being emptied, so maybe it is not needed after all as a list of the opened cards.
 I need to check this out later!!!
+
+Knowing if the same card is clicked twice
+
+Since the cards are same in pairs, checking if a card is double clicked using its content is wrong, because that would include the
+case the identical card is clicked. So I added a unique class to each of them using their place in the array. When a card is clicked its className
+is stored in a variable called previousTarget. When the matching check is about to begin, the className of the new clicked card
+is compared to the previousTarget. If the same card was clicked, it flips back down. 
