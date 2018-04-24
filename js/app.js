@@ -114,18 +114,44 @@ function endCheck() {
 };
 
 function createWinningMessage () {
+  let star = getStars.querySelectorAll("li");
+  let starSum = star.length;
+
   let winningContainer = document.createElement("div");
   winningContainer.setAttribute("id", "winningDiv");
 
   let textElement1 = document.createElement("p");
   textElement1.setAttribute("id", "congrats");
   textElement1.textContent = "Congrats!!!";
+  let text1 = textElement1.textContent;
   winningContainer.appendChild(textElement1);
+
+  let textElement2 = document.createElement("p");
+  textElement2.setAttribute("id", "infoOnWin");
+  textElement2.textContent = `You won with ${counter} moves and ${starSum} stars!`;
+  let text2 = textElement2.textContent;
+  winningContainer.appendChild(textElement2);
+
+  let buttonElement = document.createElement("button");
+  buttonElement.setAttribute("id", "buttonPlayAgain");
+  buttonElement.textContent = `Play again`;
+  winningContainer.appendChild(buttonElement);
+
+
+
+
+  // let textElement3 = document.createElement("p");
+  // textElement3.setAttribute("id", "infoOnWin");
+  // // let textSum = text1 + "\n\n" + text2;
+  // // textElement3.textContent = textSum;
+  // textElement3.innerText = text1 + "\n" + text2;
+  // winningContainer.appendChild(textElement3);
+
 
   document.body.appendChild(winningContainer);
 }
 
-// createWinningMessage ();
+createWinningMessage ();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

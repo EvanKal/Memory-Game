@@ -125,12 +125,37 @@ h1 {
       z-index: 2;
 }
 
-#congrats{
+#congrats {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     font-size: 50px;
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+}
+
+#infoOnWin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+#buttonPlayAgain {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  border-radius: 50px;
+    border: 3px solid #fff;
+    color: #fff;
+    overflow: hidden;
+    font-family: inherit;
+    background-color: rgb(46, 204, 113);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+
 }
