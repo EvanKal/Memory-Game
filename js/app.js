@@ -6,6 +6,7 @@ const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
 const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
+const getRestart = document.querySelector(".restart");
 let listOfOpenedCards = [];
 let counter = 0;
 let clickedCardsClasses = "";
@@ -58,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('the DOM is ready to be interacted with!');
   shuffleListOfCards ();
 });
+
+getRestart.addEventListener("click", function () {
+  location.reload();
+});
+
+
 
 
 function thingsToDoAfterClick(evt) {
@@ -157,18 +164,13 @@ function createWinningMessage () {
   buttonElement.textContent = `Play again`;
   winningContainer.appendChild(buttonElement);
 
-
-
-
-  // let textElement3 = document.createElement("p");
-  // textElement3.setAttribute("id", "infoOnWin");
-  // // let textSum = text1 + "\n\n" + text2;
-  // // textElement3.textContent = textSum;
-  // textElement3.innerText = text1 + "\n" + text2;
-  // winningContainer.appendChild(textElement3);
-
-
   document.body.appendChild(winningContainer);
+
+  let getReplay = document.querySelector("#buttonPlayAgain");
+
+  getReplay.addEventListener("click", function () {
+    location.reload();
+  });
 }
 
 // createWinningMessage ();
