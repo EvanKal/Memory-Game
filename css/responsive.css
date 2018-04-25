@@ -10,7 +10,7 @@
 }
 
 #congrats {
-  top: 25%;
+  top: 30%;
 }
 
 #infoOnWin {
@@ -18,7 +18,7 @@
 }
 
 #buttonPlayAgain {
-  top: 65%;
+  top: 60%;
 }
 
 }
@@ -35,7 +35,7 @@
   }
 
   #congrats {
-    top: 25%;
+    top: 30%;
   }
 
   #infoOnWin {
@@ -43,7 +43,7 @@
   }
 
   #buttonPlayAgain {
-    top: 65%;
+    top: 60%;
   }
 
 }

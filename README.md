@@ -20,3 +20,7 @@ Since the cards are same in pairs, checking if a card is double clicked using it
 case the identical card is clicked. So I added a unique class to each of them using their place in the array. When a card is clicked its className
 is stored in a variable called previousTarget. When the matching check is about to begin, the className of the new clicked card
 is compared to the previousTarget. If the same card was clicked, it flips back down. 
+
+Resetting the game
+
+The replay and the reset buttons reset the contents of the page. They do not reload it.

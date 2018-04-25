@@ -7,34 +7,57 @@ const deck = document.querySelector(".deck");
 const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
 const getRestart = document.querySelector(".restart");
-const myDocFrag1 = document.createDocumentFragment();
+let myDocFrag1 = document.createDocumentFragment();
 let listOfOpenedCards = [];
 let counter = 0;
 let clickedCardsClasses = "";
 let previousTarget = "";
+let newListOfCards = "";
 
 
 deck.addEventListener("click", thingsToDoAfterClick);
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('the DOM is ready to be interacted with!');
   shuffleListOfCards ();
 });
 
-getRestart.addEventListener("click", function () {
-  location.reload();
-});
+getRestart.addEventListener("click", reset);
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+function reset () {
+  listOfOpenedCards = [];
+  counter = 0;
+  clickedCardsClasses = "";
+  previousTarget = "";
+  myDocFrag1 = document.createDocumentFragment();
+  newListOfCards = "";
+
+  getCounter.textContent = counter;
+
+  resetStars();
+  resetCards();
+  shuffleListOfCards ();
+
+}
+
+function resetStars () {
+  let star = getStars.querySelector("li");
+  let getAllStars = getStars.querySelectorAll("li");
+  let numOfStars = getAllStars.length;
+  for ( let i=3; numOfStars<i; i--) {
+    let starHtml = star.cloneNode(true);
+    getStars.appendChild(starHtml);
+  };
+};
+
+function resetCards () {
+  let allCards = deck.querySelectorAll(".card");
+  allCards.forEach(function (element) {
+  element.classList.remove("open", "show", "animated", "bounce", "match", "noMatch", "shake");
+})};
+
 
  function shuffleListOfCards () {
-   let newListOfCards = shuffle(arrayOfCards);
-   // console.log(newListOfCards);
+   newListOfCards = shuffle(arrayOfCards);
    for (let i = 0; i<newListOfCards.length; i++) {
      const getCardByIndex = newListOfCards[i];
      let classNumber = `cardnumber${i+1}`;
@@ -77,17 +100,13 @@ function flipCard(evt) {
 
 function openedCards(evt) {
   let contentOfClickedCard = evt.target.innerHTML;
-  // console.log(contentOfClickedCard);
   listOfOpenedCards.push(contentOfClickedCard);
-  console.log(listOfOpenedCards);
 };
 
 function matchCheck(evt) {
   let contentOfClickedCard = evt.target.innerHTML;
-  console.log(contentOfClickedCard);
   if (listOfOpenedCards.length>1) {
     clickedCardsClasses = evt.target.className;
-    console.log(`${clickedCardsClasses}, ${previousTarget}`);
     if (clickedCardsClasses != previousTarget) {
     let openedCardsVariable = deck.querySelectorAll(".open");
     for (let i=0; i < listOfOpenedCards.length - 1; i++) {
@@ -104,9 +123,7 @@ function matchCheck(evt) {
       })}, 300);
       setTimeout(function delayOfFlip() {
       openedCardsVariable.forEach(function (element) {
-        // element.classList.add("shake", "animated");
         element.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
-      console.log("Nope");
     })}, 800);
     listOfOpenedCards = [];
   };
@@ -121,10 +138,10 @@ function matchCheck(evt) {
 function moveCount () {
   counter = counter + 1;
   getCounter.textContent = counter;
-  if (counter == 23) {
+  if (counter == 25) {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
-  } else if (counter == 31) {
+  } else if (counter == 33) {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
   };
@@ -134,7 +151,6 @@ function endCheck() {
   let matchedCardsSum = deck.querySelectorAll(".match");
   if (matchedCardsSum.length == 16) {
     createWinningMessage ();
-    console.log("Congrats!");
   }
 };
 
@@ -166,19 +182,13 @@ function createWinningMessage () {
 
   let getReplay = document.querySelector("#buttonPlayAgain");
 
+  function removeDiv () {
+    let getWinningContainer = document.querySelector("#winningDiv");
+    document.body.removeChild(getWinningContainer);
+  };
+
   getReplay.addEventListener("click", function () {
-    location.reload();
+    reset();
+    removeDiv();
   });
 }
-
-// createWinningMessage ();
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
