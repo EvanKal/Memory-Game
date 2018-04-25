@@ -72,7 +72,7 @@ function thingsToDoAfterClick(evt) {
 };
 
 function flipCard(evt) {
-  evt.target.classList.add("show", "open");
+  evt.target.classList.add("show", "open", "animated", "bounce");
 };
 
 function openedCards(evt) {
@@ -93,20 +93,26 @@ function matchCheck(evt) {
     for (let i=0; i < listOfOpenedCards.length - 1; i++) {
       if (contentOfClickedCard == listOfOpenedCards[i]) {
         openedCardsVariable.forEach(function (element) {
-          element.classList.add("match");
+          element.classList.add("match", "animated", "flash");
+          element.classList.remove("open");
       });
         listOfOpenedCards = [];
     } else {
+      setTimeout(function delayOfShake() {
+      openedCardsVariable.forEach(function (element) {
+        element.classList.add("noMatch", "shake");
+      })}, 300);
       setTimeout(function delayOfFlip() {
       openedCardsVariable.forEach(function (element) {
-        element.classList.remove("open", "show");
+        // element.classList.add("shake", "animated");
+        element.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
       console.log("Nope");
-      listOfOpenedCards = [];
-    })}, 500);
+    })}, 800);
+    listOfOpenedCards = [];
   };
 };
 } else {
-  evt.target.classList.remove("open", "show");
+  evt.target.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
   listOfOpenedCards = [];
 };
 };
@@ -165,7 +171,7 @@ function createWinningMessage () {
   });
 }
 
-createWinningMessage ();
+// createWinningMessage ();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
