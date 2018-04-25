@@ -1,0 +1,74 @@
+@media screen and (max-width: 450px) {
+.deck {
+  width: 325px;
+  height: 450px;
+}
+
+.deck .card {
+  width: calc((100% - 30px)/4);
+  height: 57.75px;
+}
+
+#congrats {
+  top: 25%;
+}
+
+#infoOnWin {
+  top: 45%;
+}
+
+#buttonPlayAgain {
+  top: 65%;
+}
+
+}
+
+@media screen and (min-width: 451px) and (max-width: 775px){
+  .deck {
+    width: 450px;
+    height: 500px;
+  }
+
+  .deck .card {
+    width: calc((100% - 30px)/4);
+    height: 89px;
+  }
+
+  #congrats {
+    top: 25%;
+  }
+
+  #infoOnWin {
+    top: 45%;
+  }
+
+  #buttonPlayAgain {
+    top: 65%;
+  }
+
+}
+
+@media screen and (min-width: 776px) {
+.deck {
+    width: 660px;
+    min-height: 680px;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+}
+
+#congrats {
+  top: 40%;
+}
+
+#infoOnWin {
+  top: 50%;
+}
+
+#buttonPlayAgain {
+  top: 60%;
+}
+
+}

@@ -38,8 +38,6 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -52,8 +50,6 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -127,7 +123,6 @@ h1 {
 
 #congrats {
     position: absolute;
-    top: 40%;
     left: 50%;
     font-size: 50px;
     color: white;
@@ -137,7 +132,7 @@ h1 {
 
 #infoOnWin {
   position: absolute;
-  top: 50%;
+  text-align: center;
   left: 50%;
   font-size: 25px;
   color: white;
@@ -147,7 +142,6 @@ h1 {
 
 #buttonPlayAgain {
   position: absolute;
-  top: 60%;
   left: 50%;
   border-radius: 50px;
     border: 3px solid #fff;
