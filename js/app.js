@@ -100,8 +100,10 @@ function shuffle(array) {
     return array;
 }
 
-// The function to be called after a card is clicked
+// The function to be called after a card is clicked and sends the new click to the end of the question
+// to be executed after the previous click has been executed
 function thingsToDoAfterClick(evt) {
+  setTimeout (function () {
     let target = evt.target.classList.contains("card");
     if (target) {
     previousTarget = evt.target.className;
@@ -110,7 +112,8 @@ function thingsToDoAfterClick(evt) {
     openedCards(evt);
     matchCheck(evt);
     endCheck();
-}};
+}}, 0);
+};
 
 function flipCard(evt) {
   evt.target.classList.add("show", "open", "animated", "bounce");
@@ -146,7 +149,7 @@ function matchCheck(evt) {
       setTimeout(function delayOfFlip() {
       openedCardsVariable.forEach(function (element) {
         element.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
-    })}, 800);
+    })}, 600);
     listOfOpenedCards = [];
   };
 };
