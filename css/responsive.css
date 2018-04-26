@@ -10,15 +10,19 @@
 }
 
 #congrats {
-  top: 30%;
+  top: 25%;
 }
 
 #infoOnWin {
-  top: 45%;
+  top: 40%;
+}
+
+#infoOnTime {
+  top: 50%;
 }
 
 #buttonPlayAgain {
-  top: 60%;
+  top: 65%;
 }
 
 }
@@ -42,8 +46,12 @@
     top: 45%;
   }
 
+  #infoOnTime {
+    top: 55%;
+  }
+
   #buttonPlayAgain {
-    top: 60%;
+    top: 65%;
   }
 
 }
@@ -60,10 +68,14 @@
 }
 
 #congrats {
-  top: 40%;
+  top: 30%;
 }
 
 #infoOnWin {
+  top: 45%;
+}
+
+#infoOnTime {
   top: 50%;
 }
 
