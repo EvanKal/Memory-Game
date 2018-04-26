@@ -100,7 +100,7 @@ function shuffle(array) {
     return array;
 }
 
-// The function to be called after a card is clicked and sends the new click to the end of the question
+// The function to be called after a card is clicked and sends the new click to the end of the queue
 // to be executed after the previous click has been executed
 function thingsToDoAfterClick(evt) {
   setTimeout (function () {
