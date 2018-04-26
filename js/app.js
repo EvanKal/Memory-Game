@@ -58,18 +58,19 @@ function resetStars () {
     let starHtml = star.cloneNode(true);
     getStars.appendChild(starHtml);
   };
-};
+}
 
 function resetTimer () {
   let getTimer = getScorePanel.querySelector("#timer");
   getTimer.textContent = `0${minutes}:0${seconds}`;
-};
+}
 
 function resetCards () {
   let allCards = deck.querySelectorAll(".card");
   allCards.forEach(function (element) {
   element.classList.remove("open", "show", "animated", "bounce", "match", "noMatch", "shake");
-})};
+})
+}
 
 // Shuffles the index of the cards in the array and then
 // appends each of them to a fragment according to the new index.
@@ -83,7 +84,7 @@ function resetCards () {
      myDocFrag1.appendChild(getCardByIndex);
    };
    deck.appendChild(myDocFrag1);
- };
+ }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -113,17 +114,17 @@ function thingsToDoAfterClick(evt) {
     matchCheck(evt);
     endCheck();
 }}, 0);
-};
+}
 
 function flipCard(evt) {
   evt.target.classList.add("show", "open", "animated", "bounce");
-};
+}
 
 // Stores the HTML of the clicked card in an array
 function openedCards(evt) {
   let contentOfClickedCard = evt.target.innerHTML;
   listOfOpenedCards.push(contentOfClickedCard);
-};
+}
 
 // Checks if the clicked card matches the one previously clicked.
 // First it confirms that the same card hasn't been clicked. Then checks the
@@ -158,7 +159,7 @@ function matchCheck(evt) {
   listOfOpenedCards = [];
 };
 };
-};
+}
 
 // Increments the moves counter with each click. Also removes stars.
 function moveCount () {
@@ -171,7 +172,7 @@ function moveCount () {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
   };
-};
+}
 
 // Checks if all cards have been matched and calls for the winning message.
 function endCheck() {
@@ -180,14 +181,14 @@ function endCheck() {
     clearInterval(intervalTimer);
     createWinningMessage ();
   }
-};
+}
 
 function createTimer () {
   let timer = document.createElement("div");
   timer.setAttribute("id", "timer");
   timer.textContent = `0${minutes}:0${seconds}`;
   getScorePanel.appendChild(timer);
-};
+}
 
 // Increments the seconds and the minutes variables and sets the timer's text
 // so that the format "00:00" is preserved.
@@ -210,14 +211,14 @@ function updateTimer() {
   if (seconds>=10 && minutes>=10) {
   getTimer.textContent = `${minutes}:${seconds}`;
   }
-};
+}
 
 // Starts the timer by activating the interval calling of the updateTimer function.
 // Then removes the event listener from the cards so that it is not interrupted by further clicks.
 function startTimer () {
 intervalTimer = window.setInterval(updateTimer, 1000);
 deck.removeEventListener("click", startTimer);
-};
+}
 
 // Creates the winning message in a div which holds the info and the replay button.
 // Also sets up the replay button to reset the game and remove the message.
@@ -260,10 +261,10 @@ function createWinningMessage () {
   function removeDiv () {
     let getWinningContainer = document.querySelector("#winningDiv");
     document.body.removeChild(getWinningContainer);
-  };
+  }
 
   getReplay.addEventListener("click", function () {
     reset();
     removeDiv();
   });
-};
+}
