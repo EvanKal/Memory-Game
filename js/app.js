@@ -1,3 +1,6 @@
+// TODO: delete comments in functions
+// Deactivate counter if same card is clicked!
+
 const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
@@ -5,6 +8,7 @@ const getCounter = document.querySelector(".moves");
 const getStars = document.querySelector(".stars");
 const getRestart = document.querySelector(".restart");
 const getScorePanel = document.querySelector(".score-panel");
+let contentOfClickedCard = "";
 let myDocFrag1 = document.createDocumentFragment();
 let listOfOpenedCards = [];
 let counter = 0;
@@ -105,6 +109,7 @@ function shuffle(array) {
 // to be executed after the previous click has been executed
 function thingsToDoAfterClick(evt) {
   setTimeout (function () {
+    contentOfClickedCard = evt.target.innerHTML;
     let target = evt.target.classList.contains("card");
     if (target) {
     previousTarget = evt.target.className;
@@ -122,7 +127,7 @@ function flipCard(evt) {
 
 // Stores the HTML of the clicked card in an array
 function openedCards(evt) {
-  let contentOfClickedCard = evt.target.innerHTML;
+  // let contentOfClickedCard = evt.target.innerHTML;
   listOfOpenedCards.push(contentOfClickedCard);
 }
 
@@ -130,7 +135,7 @@ function openedCards(evt) {
 // First it confirms that the same card hasn't been clicked. Then checks the
 // opened cards if they match. If they match the class match is added and open is removed.
 function matchCheck(evt) {
-  let contentOfClickedCard = evt.target.innerHTML;
+  // let contentOfClickedCard = evt.target.innerHTML;
   if (listOfOpenedCards.length>1) {
     clickedCardsClasses = evt.target.className;
     if (clickedCardsClasses != previousTarget) {
