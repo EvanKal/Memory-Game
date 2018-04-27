@@ -156,8 +156,6 @@ function matchCheck(evt) {
     listOfOpenedCards = [];
   };
 };
-} else {
-  listOfOpenedCards = [];
 };
 };
 }
