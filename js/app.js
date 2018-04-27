@@ -1,3 +1,4 @@
+const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
 const getCounter = document.querySelector(".moves");
