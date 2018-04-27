@@ -73,7 +73,7 @@ function resetTimer () {
 function resetCards () {
   let allCards = deck.querySelectorAll(".card");
   allCards.forEach(function (element) {
-  element.classList.remove("open", "show", "animated", "bounce", "match", "noMatch", "shake");
+  element.classList.remove("open", "show", "animated", "bounce", "match", "noMatch", "shake", "flash");
 })
 }
 
