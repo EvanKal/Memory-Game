@@ -1,7 +1,3 @@
-// TODO: delete comments in functions
-// Deactivate counter if same card is clicked!
-
-const listOfCards = document.querySelectorAll(".card");
 const arrayOfCards = Array.from(listOfCards);
 const deck = document.querySelector(".deck");
 const getCounter = document.querySelector(".moves");
@@ -137,7 +133,6 @@ function openedCards(evt) {
 // First it confirms that the same card hasn't been clicked. Then checks the
 // opened cards if they match. If they match the class match is added and open is removed.
 function matchCheck(evt) {
-  // let contentOfClickedCard = evt.target.innerHTML;
   if (listOfOpenedCards.length>1) {
     if (clickedCardsClasses != previousTarget) {
     let openedCardsVariable = deck.querySelectorAll(".open");
@@ -161,7 +156,6 @@ function matchCheck(evt) {
   };
 };
 } else {
-  // evt.target.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
   listOfOpenedCards = [];
 };
 };
