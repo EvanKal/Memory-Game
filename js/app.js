@@ -32,6 +32,7 @@ getRestart.addEventListener("click", reset);
 
 // Function to reset the game
 function reset () {
+  contentOfClickedCard = "";
   listOfOpenedCards = [];
   counter = 0;
   clickedCardsClasses = "";
@@ -109,14 +110,15 @@ function shuffle(array) {
 // to be executed after the previous click has been executed
 function thingsToDoAfterClick(evt) {
   setTimeout (function () {
-    contentOfClickedCard = evt.target.innerHTML;
     let target = evt.target.classList.contains("card");
     if (target) {
-    previousTarget = evt.target.className;
+    contentOfClickedCard = evt.target.innerHTML;
+    clickedCardsClasses = evt.target.className;
     moveCount ();
     flipCard(evt);
     openedCards(evt);
     matchCheck(evt);
+    previousTarget = evt.target.className;
     endCheck();
 }}, 0);
 }
@@ -137,7 +139,6 @@ function openedCards(evt) {
 function matchCheck(evt) {
   // let contentOfClickedCard = evt.target.innerHTML;
   if (listOfOpenedCards.length>1) {
-    clickedCardsClasses = evt.target.className;
     if (clickedCardsClasses != previousTarget) {
     let openedCardsVariable = deck.querySelectorAll(".open");
     for (let i=0; i < listOfOpenedCards.length - 1; i++) {
@@ -160,7 +161,7 @@ function matchCheck(evt) {
   };
 };
 } else {
-  evt.target.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
+  // evt.target.classList.remove("open", "show", "animated", "bounce", "noMatch", "shake");
   listOfOpenedCards = [];
 };
 };
@@ -168,6 +169,7 @@ function matchCheck(evt) {
 
 // Increments the moves counter with each click. Also removes stars.
 function moveCount () {
+  if (clickedCardsClasses != previousTarget) {
   counter = counter + 1;
   getCounter.textContent = counter;
   if (counter == 25) {
@@ -177,6 +179,7 @@ function moveCount () {
     let star = getStars.querySelector("li");
     getStars.removeChild(star);
   };
+}
 }
 
 // Checks if all cards have been matched and calls for the winning message.
